@@ -14,6 +14,11 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
+  config.ssh.username = "grader"
+  config.ssh.password = "grader"
+  config.ssh.port = 2200
+  config.ssh.insert_key = false
+  config.ssh.private_key_path = ["keys/private", "~/.ssh/ssh-grader"]
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -23,7 +28,6 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-   config.vm.network :forwarded_port, guest: 80, host: 2020
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
